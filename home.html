@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- title & favicon -->
+    <title>Github Issue Tracker</title>
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon" />
+    <!-- daisyUI & TailwindCSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- google font cdn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- style file -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <main>
+      <nav class="navbar bg-base-100 shadow-sm">
+        <div class="navbar mx-auto max-w-7xl flex justify-between">
+          <div class="flex-1 flex items-center">
+            <img src="./assets/github-logo.png" alt="github-logo" class="w-10 h-10" />
+            <h1 class="text-2xl font-medium text-black ml-2">Github Issue Tracker</h1>
+          </div>
+
+          <div class="flex gap-2 flex-1 justify-end">
+            <input type="text" placeholder="Search" class="input font-medium w-60" />
+
+            <button class="px-2 py-2 bg-indigo-600 text-white font-medium rounded">
+              <span><i class="fa-solid fa-plus"></i></span> New Issue
+            </button>
+          </div>
+        </div>
+      </nav>
+    </main>
+  </body>
+</html>

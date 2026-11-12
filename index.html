@@ -29,38 +29,43 @@
   </head>
   <body>
     <!-- login form -->
-    <section class="w-full h-screen bg-gray-900 font-geist flex items-center justify-center">
-      <div class="w-md h-[90%] bg-gray-500 rounded-md p-10 flex flex-col items-center">
+    <section class="w-full h-screen bg-white font-geist flex items-center justify-center">
+      <div class="w-md h-[90%] bg-gray-100 rounded-md p-10 flex flex-col items-center shadow-md">
         <!-- image and title -->
         <div class="flex flex-col items-center">
           <img src="./assets/github-logo.png" alt="github-logo" />
-          <h1 class="text-3xl capitalize font-medium text-white mt-2">github issue tracker</h1>
-          <p class="capitalize text-base text-white mt-2">Sign in to manage your issues</p>
+          <h1 class="text-3xl capitalize font-medium text-black mt-2">github issue tracker</h1>
+          <p class="capitalize text-base text-black mt-2">Sign in to manage your issues</p>
         </div>
 
         <form class="w-full mt-10 flex flex-col gap-4">
           <div class="w-full">
-            <label for="username" class="capitalize text-base font-medium text-white">username</label>
-            <input type="text" id="username" placeholder="Enter Username" class="input input-bordered w-full mt-1" />
+            <label for="username" class="capitalize text-base font-medium text-black">username</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter Username"
+              class="input input-bordered w-full mt-1 outline-none"
+            />
           </div>
 
           <div class="w-full">
-            <label for="password" class="capitalize text-base font-medium text-white">password</label>
+            <label for="password" class="capitalize text-base font-medium text-black">password</label>
             <input
               type="password"
               id="password"
               placeholder="Enter Password"
-              class="input input-bordered w-full mt-1"
+              class="input input-bordered w-full mt-1 outline-none"
             />
           </div>
 
-          <button type="submit" class="btn btn-primary w-full mt-3 capitalize">sign in</button>
+          <button type="submit" id="signInBtn" class="btn btn-primary w-full mt-3 capitalize">sign in</button>
 
-          <p class="text-center font-medium mt-4 text-white">Demo Credentials:</p>
+          <p class="text-center font-medium mt-4 text-black">Demo Credentials:</p>
 
-          <div class="w-full h-fit p-4 bg-gray-400 rounded-md">
-            <p class="text-base font-medium text-white">Username: <span class="font-normal">Admin</span></p>
-            <p class="text-base font-medium text-white">Password: <span class="font-normal">admin123</span></p>
+          <div class="w-full h-fit p-4 bg-gray-300 rounded-md">
+            <p class="text-base font-medium text-black">Username: <span class="font-normal">Admin</span></p>
+            <p class="text-base font-medium text-black">Password: <span class="font-normal">admin123</span></p>
           </div>
         </form>
       </div>
