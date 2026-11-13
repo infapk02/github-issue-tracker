@@ -29,11 +29,12 @@
   </head>
   <body>
     <main>
+      <!-- navbar  -->
       <nav class="navbar bg-base-100 shadow-sm">
         <div class="navbar mx-auto max-w-7xl flex justify-between">
           <div class="flex-1 flex items-center">
-            <img src="./assets/github-logo.png" alt="github-logo" class="w-10 h-10" />
-            <h1 class="text-2xl font-medium text-black ml-2">Github Issue Tracker</h1>
+            <img src="./assets/github-logo.png" alt="github-logo" class="w-9 h-9" />
+            <h1 class="text-xl font-medium text-black ml-2">Github Issue Tracker</h1>
           </div>
 
           <div class="flex gap-2 flex-1 justify-end">
@@ -45,6 +46,27 @@
           </div>
         </div>
       </nav>
+
+      <!-- buttons -->
+      <section id="buttons" class="w-7xl py-5 px-4 bg-white rounded-md mx-auto mt-10 border border-gray-300 space-x-2">
+        <button
+          class="px-6 py-1.5 rounded-md cursor-pointer capitalize border border-gray-400 text-black font-medium hover:bg-gray-100"
+        >
+          all
+        </button>
+
+        <button
+          class="px-6 py-1.5 rounded-md cursor-pointer capitalize border border-gray-400 text-black font-medium hover:bg-gray-100"
+        >
+          open
+        </button>
+
+        <button
+          class="px-6 py-1.5 rounded-md cursor-pointer capitalize border border-gray-400 text-black font-medium hover:bg-gray-100"
+        >
+          closed
+        </button>
+      </section>
     </main>
   </body>
 </html>
