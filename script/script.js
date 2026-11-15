@@ -1,5 +1,7 @@
+// variables
 const signInBtn = document.querySelector("#signInBtn");
 
+// login functionalities
 signInBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
