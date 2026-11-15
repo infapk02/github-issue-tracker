@@ -2,8 +2,10 @@
 const allBtn = document.querySelector("#allBtn");
 const openBtn = document.querySelector("#openBtn");
 const closeBtn = document.querySelector("#closedBtn");
+const searchInput = document.querySelector("#searchedText");
 
 let allIssues = [];
+let currentStatus = "all";
 
 // fetch all issues
 const fetchAllIssues = () => {
@@ -15,6 +17,23 @@ const fetchAllIssues = () => {
     });
 };
 
+// filter issues
+const filterIssues = () => {
+  const searchText = searchInput.value.toLowerCase().trim();
+
+  let filteredIssues = allIssues.filter((issue) => {
+    const matchesStatus = currentStatus === "all" || issue.status === currentStatus;
+
+    const matchesSearch =
+      issue.title.toLowerCase().includes(searchText) || issue.description.toLowerCase().includes(searchText);
+
+    return matchesSearch && matchesStatus;
+  });
+
+  displayAllIssues(filteredIssues);
+};
+
+// active button functionalities
 const activeBtn = (btn) => {
   allBtn.classList.remove("bg-indigo-600", "text-white");
   openBtn.classList.remove("bg-indigo-600", "text-white");
@@ -28,31 +47,41 @@ const activeBtn = (btn) => {
   btn.classList.remove("hover:bg-gray-100");
 };
 
+// search functionalities
+searchInput.addEventListener("input", () => {
+  filterIssues();
+});
+
 // displayAllIssues
 allBtn.addEventListener("click", () => {
-  displayAllIssues(allIssues);
+  currentStatus = "all";
   activeBtn(allBtn);
+  // displayAllIssues(allIssues);
+  filterIssues();
 });
 
 // displayOpenIssues
 openBtn.addEventListener("click", () => {
-  const openIssues = allIssues.filter((issue) => {
-    return issue.status === "open";
-  });
+  // const openIssues = allIssues.filter((issue) => {
+  //   return issue.status === "open";
+  // });
 
-  displayAllIssues(openIssues);
+  currentStatus = "open";
   activeBtn(openBtn);
+  // displayAllIssues(openIssues);
+  filterIssues();
 });
 
 // displayClosedIssues
 closeBtn.addEventListener("click", () => {
-  const closedIssues = allIssues.filter((issue) => {
-    return issue.status === "closed";
-  });
+  // const closedIssues = allIssues.filter((issue) => {
+  //   return issue.status === "closed";
+  // });
 
-  displayAllIssues(closedIssues);
-
+  currentStatus = "closed";
   activeBtn(closeBtn);
+  // displayAllIssues(closedIssues);
+  filterIssues();
 });
 
 // display all issues
