@@ -1,42 +1,70 @@
 // variables
 const allBtn = document.querySelector("#allBtn");
 const openBtn = document.querySelector("#openBtn");
-const closeBtn = document.querySelector("#closeBtn");
+const closeBtn = document.querySelector("#closedBtn");
+
+let allIssues = [];
 
 // fetch all issues
 const fetchAllIssues = () => {
   fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues`)
     .then((res) => res.json())
-    .then((data) => displayAllIssues(data.data));
+    .then((data) => {
+      allIssues = data.data;
+      displayAllIssues(allIssues);
+    });
 };
-fetchAllIssues();
+
+const activeBtn = (btn) => {
+  allBtn.classList.remove("bg-indigo-600", "text-white");
+  openBtn.classList.remove("bg-indigo-600", "text-white");
+  closeBtn.classList.remove("bg-indigo-600", "text-white");
+
+  allBtn.classList.add("hover:bg-gray-100");
+  openBtn.classList.add("hover:bg-gray-100");
+  closeBtn.classList.add("hover:bg-gray-100");
+
+  btn.classList.add("bg-indigo-600", "text-white");
+  btn.classList.remove("hover:bg-gray-100");
+};
+
+// displayAllIssues
+allBtn.addEventListener("click", () => {
+  displayAllIssues(allIssues);
+  activeBtn(allBtn);
+});
+
+// displayOpenIssues
+openBtn.addEventListener("click", () => {
+  const openIssues = allIssues.filter((issue) => {
+    return issue.status === "open";
+  });
+
+  displayAllIssues(openIssues);
+  activeBtn(openBtn);
+});
+
+// displayClosedIssues
+closeBtn.addEventListener("click", () => {
+  const closedIssues = allIssues.filter((issue) => {
+    return issue.status === "closed";
+  });
+
+  displayAllIssues(closedIssues);
+
+  activeBtn(closeBtn);
+});
 
 // display all issues
 const displayAllIssues = (issues) => {
   const issueContainer = document.querySelector("#issueContainer");
   issueContainer.innerHTML = ``;
 
-  // {
-  // "id": 1,
-  // "title": "Fix navigation menu on mobile devices",
-  // "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-  // "status": "open",
-  // "labels": [
-  // "bug",
-  // "help wanted"
-  // ],
-  // "priority": "high",
-  // "author": "john_doe",
-  // "assignee": "jane_smith",
-  // "createdAt": "2024-01-15T10:30:00Z",
-  // "updatedAt": "2024-01-15T10:30:00Z"
-  // },
-
   if (issues.length) {
     issues.forEach((issue) => {
       issueContainer.innerHTML += `
         <!-- card -->
-          <div class="card border-t-4 rounded-md shadow-md ${issue.status === "open" ? "border-green-500" : "border-indigo-600"}">
+          <div class="card border-t-4 h-fit rounded-md shadow-md ${issue.status === "open" ? "border-green-500" : "border-indigo-600"}">
             <!-- upper -->
             <div class="space-y-6 p-4">
               <!-- priority -->
@@ -88,3 +116,7 @@ const displayAllIssues = (issues) => {
     });
   }
 };
+
+// functions calls
+fetchAllIssues();
+activeBtn(allBtn);
