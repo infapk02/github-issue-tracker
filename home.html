@@ -31,7 +31,7 @@
     <main class="font-geist">
       <!-- navbar  -->
       <nav class="navbar bg-base-100 shadow-sm">
-        <div class="navbar mx-auto max-w-7xl flex justify-between">
+        <div class="navbar mx-auto max-w-7xl flex justify-between flex-col md:flex-row gap-4">
           <div class="flex-1 flex items-center">
             <img src="./assets/github-logo.png" alt="github-logo" class="w-9 h-9" />
             <h1 class="text-xl font-medium text-black ml-2">Github Issue Tracker</h1>
@@ -53,7 +53,10 @@
       </nav>
 
       <!-- buttons -->
-      <section id="buttons" class="w-7xl py-5 px-4 bg-white rounded-md mx-auto mt-6 border border-gray-300 space-x-2">
+      <section
+        id="buttons"
+        class="max-w-7xl py-5 px-4 bg-white rounded-md mx-auto mt-6 border border-gray-300 space-x-2"
+      >
         <button
           id="allBtn"
           class="px-6 py-1.5 rounded-md cursor-pointer capitalize border border-gray-400 text-black font-medium hover:bg-gray-100"
@@ -82,7 +85,7 @@
         <div
           class="w-full mt-6 border-gray-300 px-4 py-5 border-l border-r border-t border-b-2 rounded-tl-md rounded-tr-md"
         >
-          <div class="w-full flex justify-between">
+          <div class="w-full flex justify-between flex-col gap-4 md:flex-row">
             <!-- left -->
             <div class="h-10 flex gap-3 items-center">
               <!-- image -->
@@ -96,6 +99,7 @@
                 <p class="text-base text-gray-700">Track and manage your project issues</p>
               </div>
             </div>
+
             <!-- right -->
             <div class="flex items-center gap-5">
               <!-- open -->
@@ -113,52 +117,17 @@
         </div>
 
         <!-- all issues card container -->
-        <div id="issueContainer" class="py-4 grid grid-cols-3 gap-4 px-4 bg-gray-50 rounded-bl-md rounded-br-md"></div>
+        <div
+          id="issueContainer"
+          class="py-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 bg-gray-50 rounded-bl-md rounded-br-md"
+        ></div>
       </section>
 
       <!-- modal -->
       <!-- Open the modal using ID.showModal() method -->
       <dialog id="myModal" class="modal">
         <div class="modal-box">
-          <div id="modalContent" class="space-y-5">
-            <!-- heading -->
-            <h3 class="text-lg font-bold">heading</h3>
-
-            <!-- status -->
-            <div class="flex gap-6 items-center">
-              <p class="px-4 py-1 rounded-full bg-green-500 w-fit capitalize text-white mt-1">status</p>
-
-              <ul class="list-disc flex items-center space-x-8">
-                <li>list item 1</li>
-                <li>list item 2</li>
-              </ul>
-            </div>
-
-            <!-- labels -->
-            <div class="flex items-center gap-2">
-              <p class="uppercase text-red-500 bg-red-200 rounded-full px-5">bug</p>
-              <p class="uppercase text-red-500 bg-red-200 rounded-full px-5">bug</p>
-            </div>
-
-            <!-- description -->
-            <p class="text-gray-500">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, a. Et laborum quae deleniti nam soluta
-              ipsum veniam ipsam cum.
-            </p>
-
-            <!-- info -->
-            <div class="flex items-center gap-3">
-              <div class="py-4 bg-gray-200 flex-1 px-2 rounded-md">
-                <p>Assignee:</p>
-                <h4>Fahim Ahmed</h4>
-              </div>
-
-              <div class="py-4 bg-gray-200 flex-1 px-2 rounded-md">
-                <p class="capitalize">priority:</p>
-                <h4 class="px-5 bg-red-200 rounded-full capitalize text-white w-fit">high</h4>
-              </div>
-            </div>
-          </div>
+          <div id="modalContent" class="space-y-5"></div>
 
           <div class="modal-action">
             <form method="dialog">

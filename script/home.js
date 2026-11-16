@@ -195,13 +195,7 @@ const displayAllIssues = (issues) => {
               <div class="flex gap-2">
                 ${issue.labels
                   .map((label) => {
-                    return `${
-                      label !== ","
-                        ? `<div class="px-4 py-0.5 rounded-full bg-red-200">
-                        <p class="capitalize">${label}</p>
-                      </div>`
-                        : ` `
-                    }`;
+                    return `${label !== "," ? `<p class="uppercase text-xs rounded-full px-5 ${label === "bug" ? "text-white bg-red-500" : label === "enhancement" ? "bg-green-500 text-white" : "bg-yellow-500 text-white"}">${label}</p>` : ` `}`;
                   })
                   .join("")}
               </div>
