@@ -115,6 +115,59 @@
         <!-- all issues card container -->
         <div id="issueContainer" class="py-4 grid grid-cols-3 gap-4 px-4 bg-gray-50 rounded-bl-md rounded-br-md"></div>
       </section>
+
+      <!-- modal -->
+      <!-- Open the modal using ID.showModal() method -->
+      <dialog id="myModal" class="modal">
+        <div class="modal-box">
+          <div id="modalContent" class="space-y-5">
+            <!-- heading -->
+            <h3 class="text-lg font-bold">heading</h3>
+
+            <!-- status -->
+            <div class="flex gap-6 items-center">
+              <p class="px-4 py-1 rounded-full bg-green-500 w-fit capitalize text-white mt-1">status</p>
+
+              <ul class="list-disc flex items-center space-x-8">
+                <li>list item 1</li>
+                <li>list item 2</li>
+              </ul>
+            </div>
+
+            <!-- labels -->
+            <div class="flex items-center gap-2">
+              <p class="uppercase text-red-500 bg-red-200 rounded-full px-5">bug</p>
+              <p class="uppercase text-red-500 bg-red-200 rounded-full px-5">bug</p>
+            </div>
+
+            <!-- description -->
+            <p class="text-gray-500">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, a. Et laborum quae deleniti nam soluta
+              ipsum veniam ipsam cum.
+            </p>
+
+            <!-- info -->
+            <div class="flex items-center gap-3">
+              <div class="py-4 bg-gray-200 flex-1 px-2 rounded-md">
+                <p>Assignee:</p>
+                <h4>Fahim Ahmed</h4>
+              </div>
+
+              <div class="py-4 bg-gray-200 flex-1 px-2 rounded-md">
+                <p class="capitalize">priority:</p>
+                <h4 class="px-5 bg-red-200 rounded-full capitalize text-white w-fit">high</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn bg-indigo-600 text-white">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </main>
 
     <!-- js file  -->

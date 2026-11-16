@@ -17,6 +17,13 @@ const fetchAllIssues = () => {
     });
 };
 
+// fetch single issue
+const fetchSingleIssue = (id) => {
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
+    .then((res) => res.json())
+    .then((data) => displayModal(data.data));
+};
+
 // filter issues
 const filterIssues = () => {
   const searchText = searchInput.value.toLowerCase().trim();
@@ -51,6 +58,57 @@ const activeBtn = (btn) => {
 searchInput.addEventListener("input", () => {
   filterIssues();
 });
+
+const displayModal = (data) => {
+  const myModal = document.querySelector("#myModal");
+  const modalBox = document.querySelector("#modalContent");
+
+  modalBox.innerHTML = ``;
+  modalBox.innerHTML = `
+          <!-- heading -->
+          <h3 class="text-lg font-bold">${data.title}</h3>
+
+          <!-- status -->
+          <div class="flex gap-6 items-center">
+            <p class="px-4 py-1 rounded-full w-fit capitalize text-white mt-1 ${data.status === "open" ? "bg-green-500" : "bg-indigo-600"}">${data.status}</p>
+
+            <ul class="list-disc flex items-center space-x-8">
+              <li class="capitalize">open by ${data.author}</li>
+              <li class="capitalize">${data.createdAt.slice(0, 9)}</li>
+            </ul>
+          </div>
+
+          <!-- labels -->
+          <div class="flex items-center gap-2">
+            
+            ${data.labels
+              .map((label) => {
+                return `${label !== "," ? `<p class="uppercase rounded-full px-5 ${label === "bug" ? "text-white bg-red-500" : label === "enhancement" ? "bg-green-500 text-white" : "bg-yellow-500 text-white"}">${label}</p>` : ` `}`;
+              })
+              .join("")}
+          </div>
+
+          <!-- description -->
+          <p class="text-gray-500 capitalize">
+            ${data.description}
+          </p>
+
+          <!-- info -->
+          <div class="flex items-center gap-3">
+            <div class="py-4 bg-gray-200 flex-1 px-2 rounded-md">
+              <p>Assignee:</p>
+              <h4>${data.author}</h4>
+            </div>
+
+            <div class="py-4 bg-gray-200 flex-1 px-2 rounded-md">
+              <p class="capitalize">priority:</p>
+              <h4 class="px-5 rounded-full capitalize w-fit ${data.priority === "high" ? "bg-red-200 text-red-500" : data.priority === "medium" ? "bg-yellow-200 text-yellow-600" : "bg-gray-400 text-gray-700"}">${data.priority}</h4>
+            </div>
+          </div>
+  `;
+
+  myModal.showModal();
+};
 
 // displayAllIssues
 allBtn.addEventListener("click", () => {
@@ -93,7 +151,7 @@ const displayAllIssues = (issues) => {
     issues.forEach((issue) => {
       issueContainer.innerHTML += `
         <!-- card -->
-          <div class="card border-t-4 h-fit rounded-md shadow-md ${issue.status === "open" ? "border-green-500" : "border-indigo-600"}">
+          <div id="${issue.id}" onclick="fetchSingleIssue(${issue.id})" class="card border-t-4 h-fit rounded-md shadow-md hover:cursor-pointer ${issue.status === "open" ? "border-green-500" : "border-indigo-600"}">
             <!-- upper -->
             <div class="space-y-6 p-4">
               <!-- priority -->
