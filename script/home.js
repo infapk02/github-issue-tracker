@@ -9,6 +9,8 @@ let currentStatus = "all";
 
 // fetch all issues
 const fetchAllIssues = () => {
+  showLoadingSpinner();
+
   fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues`)
     .then((res) => res.json())
     .then((data) => {
@@ -22,6 +24,17 @@ const fetchSingleIssue = (id) => {
   fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
     .then((res) => res.json())
     .then((data) => displayModal(data.data));
+};
+
+// loading spinner
+const showLoadingSpinner = () => {
+  const issueContainer = document.querySelector("#issueContainer");
+
+  issueContainer.innerHTML = `
+    <div class="flex justify-center items-center py-20 col-span-full">
+      <span class="loading loading-bars loading-xl text-indigo-600"></span>
+    </div>
+  `;
 };
 
 // filter issues
