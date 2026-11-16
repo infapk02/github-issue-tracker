@@ -3,6 +3,7 @@ const allBtn = document.querySelector("#allBtn");
 const openBtn = document.querySelector("#openBtn");
 const closeBtn = document.querySelector("#closedBtn");
 const searchInput = document.querySelector("#searchedText");
+const issueCount = document.querySelector("#countIssue");
 
 let allIssues = [];
 let currentStatus = "all";
@@ -16,6 +17,7 @@ const fetchAllIssues = () => {
     .then((data) => {
       allIssues = data.data;
       displayAllIssues(allIssues);
+      issueCount.innerHTML = allIssues.length;
     });
 };
 
